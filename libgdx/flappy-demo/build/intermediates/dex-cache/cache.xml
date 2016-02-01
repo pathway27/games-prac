@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\SC\Desktop\ws\games-prac\flappy-demo\core\build\libs\core-1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="fe139f15c21a8060a4bf822e687553712991458b">
+        <dex dex="C:\Users\SC\Desktop\ws\games-prac\flappy-demo\android\build\intermediates\pre-dexed\debug\core-1.0_066050a621a97d89ebd7dc3e1151c86ad3436682.jar" />
+    </item>
+    <item
+        jar="C:\Users\SC\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx\1.9.0\a064f06e8692c8f7084cd0100529ed8285413ff5\gdx-1.9.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a064f06e8692c8f7084cd0100529ed8285413ff5">
+        <dex dex="C:\Users\SC\Desktop\ws\games-prac\flappy-demo\android\build\intermediates\pre-dexed\debug\gdx-1.9.0_866f63fb19f4b621714ef8ee5615ce1a0ac1f472.jar" />
+    </item>
+    <item
+        jar="C:\Users\SC\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-box2d\1.9.0\d7a6ba43a7007e30802638a8f0d7e23a2eb73415\gdx-box2d-1.9.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d7a6ba43a7007e30802638a8f0d7e23a2eb73415">
+        <dex dex="C:\Users\SC\Desktop\ws\games-prac\flappy-demo\android\build\intermediates\pre-dexed\debug\gdx-box2d-1.9.0_78e1d37107d10fa9126bdffda4877d872b4351df.jar" />
+    </item>
+    <item
+        jar="C:\Users\SC\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.9.0\b4a1696886d4c14bf12e9a85c5cff0480e543cb4\gdx-backend-android-1.9.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b4a1696886d4c14bf12e9a85c5cff0480e543cb4">
+        <dex dex="C:\Users\SC\Desktop\ws\games-prac\flappy-demo\android\build\intermediates\pre-dexed\debug\gdx-backend-android-1.9.0_b63c02a43b7895e2341264522678fd29b1755edc.jar" />
+    </item>
+
+</items>

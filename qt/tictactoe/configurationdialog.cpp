@@ -14,6 +14,18 @@ ConfigurationDialog::~ConfigurationDialog()
     delete ui;
 }
 
+void ConfigurationDialog::changeEvent(QEvent *e)
+{
+    QDialog::changeEvent(e);
+    switch (e->type()) {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}
+
 void ConfigurationDialog::updateOKButtonState()
 {
     bool pl1NameEmpty = ui->player1Name->text().isEmpty();

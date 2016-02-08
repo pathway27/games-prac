@@ -15,22 +15,23 @@ class TicTacToeWidget : public QWidget
 
 public:
     enum Player { Invalid, Player1, Player2, Draw };
+
     TicTacToeWidget(QWidget *parent = 0);
     ~TicTacToeWidget();
     void initNewGame();
     Player currentPlayer() const { return m_currentPlayer; }
     void setCurrentPlayer(Player p) {
-        if (m_currentPlayer == p) return;
+        if(m_currentPlayer == p) return;
         m_currentPlayer = p;
         emit currentPlayerChanged(p);
     }
 
 public slots:
-    void handleButtonClick(int);
+    void handleButtonClick(int index);
 
 signals:
     void currentPlayerChanged(Player);
-    void gameOver(TicTacToeWidget::Player);
+    void gameOver(Player);
 
 private:
     QList<QPushButton*> board;

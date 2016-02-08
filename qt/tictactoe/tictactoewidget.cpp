@@ -13,6 +13,11 @@ TicTacToeWidget::~TicTacToeWidget()
 {
 }
 
+void TicTacToeWidget::initNewGame()
+{
+    for (int i=0; i < 9; ++i) board.at(i)->setText(" ");
+}
+
 void TicTacToeWidget::setupBoard()
 {
     QGridLayout *gridLayout = new QGridLayout;
@@ -34,9 +39,21 @@ void TicTacToeWidget::setupBoard()
     setLayout(gridLayout);
 }
 
-void TicTacToeWidget::initNewGame()
+TicTacToeWidget::Player TicTacToeWidget::currentPlayer() const
 {
-    for (int i=0; i < 9; ++i) board.at(i)->setText(" ");
+    return m_currentPlayer;
+}
+
+void TicTacToeWidget::setCurrentPlayer(TicTacToeWidget::Player p)
+{
+    if (m_currentPlayer == p) return;
+    m_currentPlayer = p;
+    emit currentPlayerChanged(p);
+}
+
+TicTacToeWidget::Player checkWinCondition(int row, int column) const
+{
+    return TicTacToeWidget::Player;
 }
 
 void TicTacToeWidget::handleButtonClick(int index)

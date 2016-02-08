@@ -15,8 +15,14 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+public slots:
+    void startNewGame();
+
 private:
     Ui::MainWindow *ui;
+
+private slots:
+    void updateNameLabels();
 };
 
 #endif // MAINWINDOW_H

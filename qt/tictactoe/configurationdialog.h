@@ -24,6 +24,9 @@ public:
 public slots:
     void updateOKButtonState();
 
+protected:
+    void changeEvent(QEvent *e);
+
 private:
     Ui::ConfigurationDialog *ui;
 };

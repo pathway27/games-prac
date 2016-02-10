@@ -18,6 +18,28 @@ void TicTacToeWidget::initNewGame()
     for (int i=0; i < 9; ++i) board.at(i)->setText(" ");
 }
 
+TicTacToeWidget::Player TicTacToeWidget::checkWinCondition(int row, int column) const
+{
+    return Draw;
+}
+
+void TicTacToeWidget::handleButtonClick(int index)
+{
+    if (index < 0 || index >= board.size()) return;
+
+    QPushButton *button = board.at(index);
+    if (button->text() != " ") return;
+
+    button->setText(currentPlayer() == Player1 ? "X" : "O");
+    Player winner = checkWinCondition(index / 3, index % 3);
+    if (winner == Invalid) {
+        setCurrentPlayer(currentPlayer() == Player1 ? Player2 : Player1);
+        return;
+    } else {
+        emit gameOver(winner);
+    }
+}
+
 void TicTacToeWidget::setupBoard()
 {
     QGridLayout *gridLayout = new QGridLayout;
@@ -37,38 +59,4 @@ void TicTacToeWidget::setupBoard()
 
     connect(mapper, SIGNAL(mapped(int)), this, SLOT(handleButtonClick(int)));
     setLayout(gridLayout);
-}
-
-TicTacToeWidget::Player TicTacToeWidget::currentPlayer() const
-{
-    return m_currentPlayer;
-}
-
-void TicTacToeWidget::setCurrentPlayer(TicTacToeWidget::Player p)
-{
-    if (m_currentPlayer == p) return;
-    m_currentPlayer = p;
-    emit currentPlayerChanged(p);
-}
-
-TicTacToeWidget::Player checkWinCondition(int row, int column) const
-{
-    return TicTacToeWidget::Player;
-}
-
-void TicTacToeWidget::handleButtonClick(int index)
-{
-    if (index < 0 || index >= board.size()) return;
-
-    QPushButton *button = board.at(index);
-    if (button->text() != " ") return;
-
-    button->setText(currentPlayer() == Player1 ? "X" : "O");
-    Player winner = checkWinCondition(index / 3, index % 3);
-    if (winner == Invalid) {
-        setCurrentPlayer(currentPlayer() == Player1 ? Player2 : Player1);
-        return;
-    } else {
-        emit gameOver(winner);
-    }
 }

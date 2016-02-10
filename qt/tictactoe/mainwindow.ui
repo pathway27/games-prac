@@ -23,10 +23,10 @@
      </widget>
     </item>
     <item>
-     <widget class="TicTacToeWidget" name="widget" native="true"/>
+     <widget class="TicTacToeWidget" name="gameBoard" native="true"/>
     </item>
     <item>
-     <widget class="QLabel" name="gameBoard">
+     <widget class="QLabel" name="player2">
       <property name="text">
        <string/>
       </property>

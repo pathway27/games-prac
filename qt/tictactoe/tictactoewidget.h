@@ -26,12 +26,14 @@ public:
         emit currentPlayerChanged(p);
     }
 
+    Player checkWinCondition(int row, int column) const;
+
 public slots:
     void handleButtonClick(int index);
 
 signals:
     void currentPlayerChanged(Player);
-    void gameOver(Player);
+    void gameOver(TicTacToeWidget::Player);
 
 private:
     QList<QPushButton*> board;

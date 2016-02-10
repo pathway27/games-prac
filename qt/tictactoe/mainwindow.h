@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "tictactoewidget.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,11 +19,15 @@ public:
 public slots:
     void startNewGame();
 
-private:
-    Ui::MainWindow *ui;
+protected:
+    void changeEvent(QEvent *e);
 
 private slots:
     void updateNameLabels();
+    void handleGameOver(TicTacToeWidget::Player winner);
+
+private:
+    Ui::MainWindow *ui;
 };
 
 #endif // MAINWINDOW_H

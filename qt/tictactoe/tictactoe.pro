@@ -22,8 +22,8 @@ HEADERS  += tictactoewidget.h \
     mainwindow.h
 
 FORMS += \
-    configurationdialog.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    configurationdialog.ui
 
 RESOURCES += \
     resources.qrc

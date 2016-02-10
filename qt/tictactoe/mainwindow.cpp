@@ -1,20 +1,18 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMessageBox>
 #include "configurationdialog.h"
-#include "tictactoewidget.h"
-
-#include <QFont>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    ui->setupUi(this);
     connect(ui->actionNewGame, SIGNAL(triggered()), this,
             SLOT(startNewGame()));
     connect(ui->actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(ui->gameBoard, SIGNAL(currentPlayerChanged(Player)), this,
             SLOT(updateNameLabels()));
-    ui->setupUi(this);
 }
 
 MainWindow::~MainWindow()
@@ -37,6 +35,18 @@ void MainWindow::startNewGame()
     updateNameLabels();
 }
 
+void MainWindow::changeEvent(QEvent *e)
+{
+    QMainWindow::changeEvent(e);
+    switch (e->type()) {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+}
+
 void MainWindow::updateNameLabels()
 {
     QFont f = ui->player1->font();
@@ -46,7 +56,8 @@ void MainWindow::updateNameLabels()
     ui->player2->setFont(f);
 }
 
-void MainWindow::handleGameOver(TicTacToeWidget::Player winner) {
+void MainWindow::handleGameOver(TicTacToeWidget::Player winner)
+{
     ui->gameBoard->setEnabled(true);
     QString message;
 
@@ -54,7 +65,7 @@ void MainWindow::handleGameOver(TicTacToeWidget::Player winner) {
         message = "Game ended with draw.";
     } else {
         message = QString("%1 wins").arg(winner == TicTacToeWidget::Player1
-                                         ? ui->player1->text() : ui->player2.text());
+                                         ? ui->player1->text() : ui->player2->text());
     }
 
     QMessageBox::information(this, "Info", message);

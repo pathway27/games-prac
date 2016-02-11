@@ -20,6 +20,48 @@ void TicTacToeWidget::initNewGame()
 
 TicTacToeWidget::Player TicTacToeWidget::checkWinCondition(int row, int column) const
 {
+    QString current = board.at(row * 3 + column)->text();
+    int count = 0;
+
+    // horizontal sequence
+    for (int c = 0; c < 3; ++c) {
+        if (board.at(row*3+c)->text() == current)
+            ++count;
+    }
+
+    if (count == 3) return currentPlayer();
+    count = 0;
+
+    // horizontal sequence
+    for (int r = 0; r < 3; ++r) {
+        if (board.at(r*3+column)->text() == current)
+            ++count;
+    }
+
+    if (count == 3) return currentPlayer();
+    count = 0;
+
+    // diagonal
+    if (row == column) {
+        for (int c = 0; c < 3; ++c) {
+            if (board.at(c*3+c)->text() == current)
+                ++count;
+        }
+        if (count == 3) return currentPlayer();
+    }
+
+    count = 0;
+
+    if (row + column == 2) {
+        for (int c = 0; c < 3; ++c) {
+            if (board.at((2-c)*3+c)->text() == current)
+                ++count;
+        }
+        if (count == 3) return currentPlayer();
+    }
+
+    // check empty fields
+    foreach(QPushButton * button, board) if (button->text() == " ") return Invalid;
     return Draw;
 }
 
